@@ -5,5 +5,5 @@ PyWavelets
 scikit-learn
 joblib
 xgboost
-tensorflow
+ai-edge-litert
 plotly
