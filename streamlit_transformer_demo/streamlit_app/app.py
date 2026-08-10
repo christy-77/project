@@ -17,7 +17,7 @@ import joblib
 import numpy as np
 import streamlit as st
 import xgboost as xgb
-import tensorflow as tf
+from ai_edge_litert.interpreter import Interpreter
 import plotly.graph_objects as go
 
 from preprocess_signal import preprocess_signal
@@ -76,7 +76,7 @@ MODELS_DIR = "models"
 
 @st.cache_resource
 def load_pipeline():
-    interp = tf.lite.Interpreter(model_path=f"{MODELS_DIR}/track1_k20_v3_native.tflite")
+   interp = Interpreter(model_path=f"{MODELS_DIR}/track1_k20_v3_native.tflite")
     interp.allocate_tensors()
 
     xgb_model = xgb.Booster()
