@@ -1,0 +1,4 @@
+{
+  "track1_roc_optimal_threshold": 2.708,
+  "note": "Reconstruction error above this value is classified as FAULT. Selected via ROC-optimal (Youden's J statistic) on the held-out test set."
+}

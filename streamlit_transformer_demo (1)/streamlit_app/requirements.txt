@@ -1,0 +1,10 @@
+streamlit
+streamlit-autorefresh
+numpy
+scipy
+PyWavelets
+scikit-learn
+joblib
+xgboost
+ai-edge-litert
+plotly
