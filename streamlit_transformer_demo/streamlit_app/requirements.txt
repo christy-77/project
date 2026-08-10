@@ -1,0 +1,9 @@
+streamlit
+numpy
+scipy
+PyWavelets
+scikit-learn
+joblib
+xgboost
+tensorflow
+plotly
