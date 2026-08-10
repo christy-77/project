@@ -78,27 +78,27 @@ MODELS_DIR = "models"
 def load_pipeline():
   interp = Interpreter(model_path=f"{MODELS_DIR}/track1_k20_v3_native.tflite")
   interp.allocate_tensors()
+  
+  xgb_model = xgb.Booster()
+  xgb_model.load_model(f"{MODELS_DIR}/xgb_production_model.json")
 
-    xgb_model = xgb.Booster()
-    xgb_model.load_model(f"{MODELS_DIR}/xgb_production_model.json")
-
-    scaler = joblib.load(f"{MODELS_DIR}/track1_temporal_scaler_v3.pkl")
-    ranked_indices = np.load(f"{MODELS_DIR}/ranked_indices_temporal_v3.npy")
-    top_k_indices = ranked_indices[:20]
-
-    with open(f"{MODELS_DIR}/threshold.json") as f:
-        tau = json.load(f)["track1_roc_optimal_threshold"]
-
-    with open(f"{MODELS_DIR}/label_mapping.json") as f:
-        label_map = json.load(f)
-
-    return {
-        "interp": interp,
-        "in_detail": interp.get_input_details()[0],
-        "out_detail": interp.get_output_details()[0],
-        "xgb_model": xgb_model,
-        "scaler": scaler,
-        "top_k_indices": top_k_indices,
+  scaler = joblib.load(f"{MODELS_DIR}/track1_temporal_scaler_v3.pkl")
+  ranked_indices = np.load(f"{MODELS_DIR}/ranked_indices_temporal_v3.npy")
+  top_k_indices = ranked_indices[:20]
+  
+  with open(f"{MODELS_DIR}/threshold.json") as f:
+      tau = json.load(f)["track1_roc_optimal_threshold"]
+  
+  with open(f"{MODELS_DIR}/label_mapping.json") as f:
+      label_map = json.load(f)
+  
+  return {
+          "interp": interp,
+          "in_detail": interp.get_input_details()[0],
+          "out_detail": interp.get_output_details()[0],
+          "xgb_model": xgb_model,
+          "scaler": scaler,
+          "top_k_indices": top_k_indices,
         "tau": tau,
         "label_map": label_map,
     }
