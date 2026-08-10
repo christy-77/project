@@ -76,8 +76,8 @@ MODELS_DIR = "models"
 
 @st.cache_resource
 def load_pipeline():
-   interp = Interpreter(model_path=f"{MODELS_DIR}/track1_k20_v3_native.tflite")
-    interp.allocate_tensors()
+  interp = Interpreter(model_path=f"{MODELS_DIR}/track1_k20_v3_native.tflite")
+  interp.allocate_tensors()
 
     xgb_model = xgb.Booster()
     xgb_model.load_model(f"{MODELS_DIR}/xgb_production_model.json")
