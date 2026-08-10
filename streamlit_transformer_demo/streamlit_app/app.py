@@ -71,7 +71,8 @@ st.markdown(
 # ---------------------------------------------------------------------------
 # Model loading (cached so this only happens once)
 # ---------------------------------------------------------------------------
-MODELS_DIR = "models"
+import os
+MODELS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models")
 
 
 @st.cache_resource
